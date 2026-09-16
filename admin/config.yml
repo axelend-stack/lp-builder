@@ -10,10 +10,12 @@ media_folder: "uploads"     # gambar/video yang diupload lewat panel disimpan di
 public_folder: "/uploads"
 
 collections:
-  - name: "landing_pages"
+    - name: "landing_pages"
     label: "Landing Page"
     folder: "content"
     create: true
+    extension: "json"
+    format: "json"
     slug: "{{slug}}"
     fields:
       - { label: "Slug (jadi bagian URL, tanpa spasi)", name: "slug", widget: "string" }
