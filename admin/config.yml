@@ -1,13 +1,7 @@
 backend:
   name: github
-  repo: NAMA_ORG/NAMA_REPO   # ganti sesuai repo GitHub kamu
+  repo: axelend-stack/lp-builder   # ganti sesuai repo GitHub kamu
   branch: main
-  # Sveltia CMS butuh OAuth client kecil untuk proses login GitHub.
-  # Cara termudah: deploy "sveltia-cms-auth" (gratis) ke Cloudflare Workers,
-  # lalu isi base_url di bawah ini dengan URL worker-nya.
-  # Panduan lengkap ada di README.md bagian "Setup Panel Tim".
-  base_url: https://GANTI-DENGAN-URL-OAUTH-WORKER-KAMU
-  auth_endpoint: auth
 
 # Draft harus di-review dulu sebelum tayang -> aman untuk kerja bareng tim
 publish_mode: editorial_workflow
