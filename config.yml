@@ -1,0 +1,113 @@
+backend:
+  name: github
+  repo: NAMA_ORG/NAMA_REPO   # ganti sesuai repo GitHub kamu
+  branch: main
+  # Sveltia CMS butuh OAuth client kecil untuk proses login GitHub.
+  # Cara termudah: deploy "sveltia-cms-auth" (gratis) ke Cloudflare Workers,
+  # lalu isi base_url di bawah ini dengan URL worker-nya.
+  # Panduan lengkap ada di README.md bagian "Setup Panel Tim".
+  base_url: https://GANTI-DENGAN-URL-OAUTH-WORKER-KAMU
+  auth_endpoint: auth
+
+# Draft harus di-review dulu sebelum tayang -> aman untuk kerja bareng tim
+publish_mode: editorial_workflow
+
+media_folder: "uploads"     # gambar/video yang diupload lewat panel disimpan di sini
+public_folder: "/uploads"
+
+collections:
+  - name: "landing_pages"
+    label: "Landing Page"
+    folder: "content"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Slug (jadi bagian URL, tanpa spasi)", name: "slug", widget: "string" }
+      - { label: "Template", name: "template", widget: "select", options: ["leadgen"], default: "leadgen" }
+
+      - label: "Info Halaman"
+        name: "site"
+        widget: "object"
+        fields:
+          - { label: "Judul Tab Browser", name: "title", widget: "string" }
+          - { label: "Favicon (URL)", name: "favicon", widget: "string", required: false }
+          - { label: "Teks Footer", name: "footerText", widget: "string", required: false }
+
+      - label: "Warna"
+        name: "theme"
+        widget: "object"
+        fields:
+          - { label: "Warna Brand (hex)", name: "brandColor", widget: "color", default: "#e0245e" }
+
+      - label: "Hero / Bagian Atas"
+        name: "hero"
+        widget: "object"
+        fields:
+          - { label: "Headline", name: "headline", widget: "string" }
+          - { label: "Sub-headline", name: "subheadline", widget: "text" }
+          - label: "Media"
+            name: "media"
+            widget: "object"
+            fields:
+              - { label: "Tipe", name: "type", widget: "select", options: ["image", "video"], default: "image" }
+              - { label: "Upload Gambar/Video", name: "url", widget: "image" }
+              - { label: "Alt text (untuk gambar)", name: "alt", widget: "string", required: false }
+          - label: "Tombol CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Teks Tombol", name: "text", widget: "string", default: "Pesan Sekarang" }
+              - { label: "Link tujuan (WA/form/checkout)", name: "url", widget: "string" }
+              - label: "Event yang di-track"
+                name: "event"
+                widget: "select"
+                options: ["Lead", "Purchase", "CompleteRegistration", "AddToCart", "InitiateCheckout"]
+                default: "Lead"
+              - { label: "Value transaksi (opsional, angka)", name: "value", widget: "string", required: false, default: "0" }
+              - { label: "Mata uang", name: "currency", widget: "string", default: "IDR" }
+
+      - label: "Benefit 1"
+        name: "benefit1"
+        widget: "object"
+        fields:
+          - { label: "Icon (emoji)", name: "icon", widget: "string", default: "✨" }
+          - { label: "Judul", name: "title", widget: "string" }
+          - { label: "Deskripsi", name: "desc", widget: "string" }
+
+      - label: "Benefit 2"
+        name: "benefit2"
+        widget: "object"
+        fields:
+          - { label: "Icon (emoji)", name: "icon", widget: "string", default: "⚡" }
+          - { label: "Judul", name: "title", widget: "string" }
+          - { label: "Deskripsi", name: "desc", widget: "string" }
+
+      - label: "Benefit 3"
+        name: "benefit3"
+        widget: "object"
+        fields:
+          - { label: "Icon (emoji)", name: "icon", widget: "string", default: "🚚" }
+          - { label: "Judul", name: "title", widget: "string" }
+          - { label: "Deskripsi", name: "desc", widget: "string" }
+
+      - label: "Tracking Pixel"
+        name: "tracking"
+        widget: "object"
+        fields:
+          - label: "Meta (Facebook/Instagram)"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Pixel ID", name: "pixelId", widget: "string", required: false }
+              - { label: "Aktifkan CAPI (server-side)?", name: "capiEnabled", widget: "boolean", default: false }
+          - label: "Google (GA4 / Google Ads)"
+            name: "google"
+            widget: "object"
+            fields:
+              - { label: "Measurement ID / Conversion ID", name: "gtagId", widget: "string", required: false }
+          - label: "TikTok"
+            name: "tiktok"
+            widget: "object"
+            fields:
+              - { label: "Pixel ID", name: "pixelId", widget: "string", required: false }
+              - { label: "Aktifkan CAPI (server-side)?", name: "capiEnabled", widget: "boolean", default: false }
