@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{site.title}}</title>
+<link rel="icon" href="{{site.favicon}}">
+<style>
+  :root{
+    --brand:{{theme.brandColor}};
+    --text:#16181d;
+    --muted:#6b7280;
+    --bg:#ffffff;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.5;}
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px;}
+  .hero{padding:48px 0 32px;text-align:center;}
+  .hero h1{font-size:clamp(26px,5vw,40px);margin:0 0 12px;font-weight:800;}
+  .hero p.sub{color:var(--muted);font-size:18px;margin:0 0 24px;}
+  .media{width:100%;border-radius:var(--radius);overflow:hidden;margin-bottom:24px;background:#f2f2f2;}
+  .media img, .media video{width:100%;display:block;}
+  .cta-btn{display:inline-block;background:var(--brand);color:#fff;font-weight:700;font-size:18px;
+    padding:16px 36px;border-radius:999px;text-decoration:none;border:none;cursor:pointer;
+    transition:transform .15s ease;}
+  .cta-btn:active{transform:scale(0.97);}
+  .benefits{padding:32px 0;}
+  .benefit{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #eee;}
+  .benefit:last-child{border-bottom:none;}
+  .benefit .icon{font-size:24px;}
+  .benefit h3{margin:0 0 4px;font-size:17px;}
+  .benefit p{margin:0;color:var(--muted);font-size:15px;}
+  .cta-section{text-align:center;padding:32px 0 56px;}
+  footer{text-align:center;padding:24px 0;color:var(--muted);font-size:13px;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>{{hero.headline}}</h1>
+    <p class="sub">{{hero.subheadline}}</p>
+    <div class="media">{{MEDIA_HTML}}</div>
+    <a href="{{hero.cta.url}}"
+       class="cta-btn"
+       data-track-event="{{hero.cta.event}}"
+       data-track-value="{{hero.cta.value}}"
+       data-track-currency="{{hero.cta.currency}}">
+      {{hero.cta.text}}
+    </a>
+  </section>
+
+  <section class="benefits">
+    <div class="benefit">
+      <div class="icon">{{benefit1.icon}}</div>
+      <div><h3>{{benefit1.title}}</h3><p>{{benefit1.desc}}</p></div>
+    </div>
+    <div class="benefit">
+      <div class="icon">{{benefit2.icon}}</div>
+      <div><h3>{{benefit2.title}}</h3><p>{{benefit2.desc}}</p></div>
+    </div>
+    <div class="benefit">
+      <div class="icon">{{benefit3.icon}}</div>
+      <div><h3>{{benefit3.title}}</h3><p>{{benefit3.desc}}</p></div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <a href="{{hero.cta.url}}"
+       class="cta-btn"
+       data-track-event="{{hero.cta.event}}"
+       data-track-value="{{hero.cta.value}}"
+       data-track-currency="{{hero.cta.currency}}">
+      {{hero.cta.text}}
+    </a>
+  </section>
+
+  <footer>{{site.footerText}}</footer>
+</div>
+
+{{TRACKING_SCRIPTS}}
+
+</body>
+</html>
