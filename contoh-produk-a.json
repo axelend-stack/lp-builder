@@ -1,0 +1,44 @@
+{
+  "slug": "contoh-produk-a",
+  "template": "leadgen",
+  "site": {
+    "title": "Produk A - Promo Terbatas",
+    "favicon": "https://placehold.co/32x32",
+    "footerText": "© 2026 Brand Kamu. Semua hak dilindungi."
+  },
+  "theme": {
+    "brandColor": "#e0245e"
+  },
+  "hero": {
+    "headline": "Kulit Glowing dalam 7 Hari",
+    "subheadline": "Formula baru, hasil terlihat lebih cepat. Stok terbatas untuk minggu ini.",
+    "media": {
+      "type": "image",
+      "url": "https://placehold.co/720x480",
+      "alt": "Foto produk"
+    },
+    "cta": {
+      "text": "Pesan Sekarang",
+      "url": "https://wa.me/6281234567890?text=Saya%20mau%20pesan%20Produk%20A",
+      "event": "Lead",
+      "value": "0",
+      "currency": "IDR"
+    }
+  },
+  "benefit1": { "icon": "✨", "title": "Bahan Alami", "desc": "Tanpa paraben, aman untuk kulit sensitif." },
+  "benefit2": { "icon": "⚡", "title": "Hasil Cepat", "desc": "Terlihat perubahan sejak pemakaian minggu pertama." },
+  "benefit3": { "icon": "🚚", "title": "Gratis Ongkir", "desc": "Untuk pemesanan hari ini se-Indonesia." },
+  "tracking": {
+    "meta": {
+      "pixelId": "",
+      "capiEnabled": false
+    },
+    "google": {
+      "gtagId": ""
+    },
+    "tiktok": {
+      "pixelId": "",
+      "capiEnabled": false
+    }
+  }
+}
