@@ -1,0 +1,12 @@
+{
+  "name": "scalev-lite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LP builder sederhana: HTML template + config JSON + tracking pixel/CAPI, gratis lewat Netlify.",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
