@@ -9,6 +9,22 @@ const path = require("path");
 const CONTENT_DIR = path.join(__dirname, "content");
 const TEMPLATE_DIR = path.join(__dirname, "templates");
 const DIST_DIR = path.join(__dirname, "dist");
+const ADMIN_DIR = path.join(__dirname, "admin");
+
+// --- helper: copy folder beserta isinya (rekursif) ---
+function copyDir(src, dest) {
+  if (!fs.existsSync(src)) return;
+  fs.mkdirSync(dest, { recursive: true });
+  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+    if (entry.isDirectory()) {
+      copyDir(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
+}
 
 // --- helper: ratakan object bersarang jadi "a.b.c": value ---
 function flatten(obj, prefix = "", out = {}) {
@@ -182,6 +198,10 @@ function build() {
 
     console.log(`✔ Build: /${cfg.slug}/`);
   }
+
+  // Salin folder admin/ (panel CMS) ke dist/admin/ supaya ikut ter-deploy
+  copyDir(ADMIN_DIR, path.join(DIST_DIR, "admin"));
+  console.log("✔ Panel admin ikut di-copy ke /admin/");
 }
 
 build();
